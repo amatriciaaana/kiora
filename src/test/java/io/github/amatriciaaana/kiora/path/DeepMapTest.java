@@ -1,4 +1,4 @@
-package dev.codex.pathmap;
+package io.github.amatriciaaana.kiora.path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

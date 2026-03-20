@@ -1,7 +1,7 @@
-package dev.codex.pathmap;
+package io.github.amatriciaaana.kiora.path;
 
 /**
- * Signals that a path string does not follow pathmap syntax rules.
+ * Signals that a path string does not follow path syntax rules.
  */
 public final class PathSyntaxException extends IllegalArgumentException {
 
