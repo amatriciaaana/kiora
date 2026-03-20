@@ -1,6 +1,6 @@
-package io.github.amatriciaaana.kiora.optional;
+package dev.kiora.optional;
 
-import io.github.amatriciaaana.kiora.result.Result;
+import dev.kiora.result.Result;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;

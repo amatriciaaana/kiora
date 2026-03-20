@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.result;
+package dev.kiora.result;
 
 /**
  * Marker value for operations that complete successfully without returning data.

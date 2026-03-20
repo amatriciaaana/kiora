@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.path;
+package dev.kiora.path;
 
 /**
  * Signals that a path string does not follow path syntax rules.
