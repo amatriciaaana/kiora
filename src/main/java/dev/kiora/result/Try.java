@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.result;
+package dev.kiora.result;
 
 /**
  * Factory methods for converting checked exception code into {@link Result} values.

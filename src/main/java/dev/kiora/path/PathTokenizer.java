@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.path;
+package dev.kiora.path;
 
 import java.util.ArrayList;
 import java.util.List;

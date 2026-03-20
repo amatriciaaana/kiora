@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.result;
+package dev.kiora.result;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
