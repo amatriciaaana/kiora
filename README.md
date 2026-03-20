@@ -2,21 +2,13 @@
 
 `kiora` is a Java utility library aimed at reducing repetitive code in everyday applications.
 
-The first feature in the library is path-based access for nested `Map<String, Object>` and `List<?>` structures. It targets the gap between:
+The library currently includes three focused packages:
 
-- raw `Map` traversal with repetitive casts and null checks
-- full JSON binding when the payload is dynamic and not worth modeling yet
+- `io.github.amatriciaaana.kiora.path` for safe access to nested `Map<String, Object>` and `List<?>` structures
+- `io.github.amatriciaaana.kiora.result` for lightweight success/failure handling around exception-heavy code
+- `io.github.amatriciaaana.kiora.optional` for small `Optional` helpers that remove repeated boilerplate
 
-## Current Scope
-
-The current package is `io.github.amatriciaaana.kiora.path`.
-
-It provides:
-
-- `DeepMap` for safe nested lookup
-- `PathSyntaxException` for invalid path input
-
-The longer-term direction is to keep `kiora` broad enough to host additional small utilities beyond path access.
+The longer-term direction is to keep `kiora` broad enough to host additional small utilities without turning it into a framework.
 
 ## Requirements
 
@@ -25,19 +17,7 @@ The longer-term direction is to keep `kiora` broad enough to host additional sma
 
 That setup keeps the project aligned with the latest LTS while remaining easy to adopt in existing Java 17 environments.
 
-## Path Syntax
-
-- `user.profile.name`
-- `items[0].price`
-- `settings.flags.beta`
-
-Current constraints:
-
-- `.` separates map keys
-- `[n]` accesses list elements
-- map keys themselves must not contain `.` or `[]`
-
-## Example
+## Path Example
 
 ```java
 import io.github.amatriciaaana.kiora.path.DeepMap;
@@ -60,17 +40,38 @@ int price = deepMap.getInt("items[0].price").orElse(0);
 boolean hasCoupon = deepMap.hasPath("items[0].coupon");
 ```
 
-## API Surface
+## Result Example
 
-- `DeepMap.of(Map<String, ?> source)`
-- `Optional<Object> get(String path)`
-- `Optional<T> get(String path, Class<T> type)`
-- `Optional<String> getString(String path)`
-- `Optional<Integer> getInt(String path)`
-- `Optional<Boolean> getBoolean(String path)`
-- `Optional<DeepMap> getMap(String path)`
-- `boolean hasPath(String path)`
-- `Object require(String path)`
+```java
+import io.github.amatriciaaana.kiora.result.Result;
+import io.github.amatriciaaana.kiora.result.Try;
+
+Result<Integer> parsed = Try.of(() -> Integer.parseInt("42"))
+        .map(value -> value + 1);
+
+int value = parsed.orElse(0);
+```
+
+## Optional Example
+
+```java
+import io.github.amatriciaaana.kiora.optional.MoreOptional;
+import io.github.amatriciaaana.kiora.result.Result;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
+Optional<String> nickname = MoreOptional.or(Optional.empty(), () -> "guest");
+Optional<String> visible = MoreOptional.filterNot(nickname, String::isBlank);
+Result<String> required = MoreOptional.toResult(visible, () -> new NoSuchElementException("nickname"));
+```
+
+## Optional API Surface
+
+- `MoreOptional.ofNullable(value)`
+- `MoreOptional.or(optional, fallbackSupplier)`
+- `MoreOptional.filterNot(optional, predicate)`
+- `MoreOptional.toResult(optional, errorSupplier)`
+- `MoreOptional.streamOfNullable(value)`
 
 ## Build
 
