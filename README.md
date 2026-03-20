@@ -2,11 +2,12 @@
 
 `kiora` is a Java utility library aimed at reducing repetitive code in everyday applications.
 
-The library currently includes three focused packages:
+The library currently includes four focused packages:
 
 - `io.github.amatriciaaana.kiora.path` for safe access to nested `Map<String, Object>` and `List<?>` structures
 - `io.github.amatriciaaana.kiora.result` for lightweight success/failure handling around exception-heavy code
 - `io.github.amatriciaaana.kiora.optional` for small `Optional` helpers that remove repeated boilerplate
+- `io.github.amatriciaaana.kiora.text` for null-safe text utilities around blank and empty strings
 
 The longer-term direction is to keep `kiora` broad enough to host additional small utilities without turning it into a framework.
 
@@ -65,13 +66,24 @@ Optional<String> visible = MoreOptional.filterNot(nickname, String::isBlank);
 Result<String> required = MoreOptional.toResult(visible, () -> new NoSuchElementException("nickname"));
 ```
 
-## Optional API Surface
+## Text Example
 
-- `MoreOptional.ofNullable(value)`
-- `MoreOptional.or(optional, fallbackSupplier)`
-- `MoreOptional.filterNot(optional, predicate)`
-- `MoreOptional.toResult(optional, errorSupplier)`
-- `MoreOptional.streamOfNullable(value)`
+```java
+import io.github.amatriciaaana.kiora.text.Texts;
+
+String nickname = Texts.blankToDefault("  ", "guest");
+String normalized = Texts.nullIfBlank("\n");
+boolean blank = Texts.isBlank(nickname);
+```
+
+## Text API Surface
+
+- `Texts.isBlank(value)`
+- `Texts.isEmpty(value)`
+- `Texts.nullIfBlank(value)`
+- `Texts.emptyToNull(value)`
+- `Texts.blankToDefault(value, fallback)`
+- `Texts.lines(value)`
 
 ## Build
 
