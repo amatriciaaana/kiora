@@ -1,3 +1,3 @@
-module dev.codex.pathmap {
-    exports dev.codex.pathmap;
+module io.github.amatriciaaana.kiora {
+    exports io.github.amatriciaaana.kiora.path;
 }

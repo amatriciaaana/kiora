@@ -1,22 +1,22 @@
-# pathmap
+# kiora
 
-`pathmap` is a small Java library for safe access to nested `Map<String, Object>` and `List<?>` structures with a simple path syntax.
+`kiora` is a Java utility library aimed at reducing repetitive code in everyday applications.
 
-It targets the annoying gap between:
+The first feature in the library is path-based access for nested `Map<String, Object>` and `List<?>` structures. It targets the gap between:
 
 - raw `Map` traversal with repetitive casts and null checks
 - full JSON binding when the payload is dynamic and not worth modeling yet
 
-## Why This Library
+## Current Scope
 
-This library is aimed at a broad Java audience:
+The current package is `io.github.amatriciaaana.kiora.path`.
 
-- backend services handling dynamic API payloads
-- configuration-heavy applications
-- prototypes that are not ready for full DTO modeling
-- migration code that still works with `Map<String, Object>`
+It provides:
 
-The design goal is simple: keep the API tiny, dependency-free, and useful in any Java 17+ codebase.
+- `DeepMap` for safe nested lookup
+- `PathSyntaxException` for invalid path input
+
+The longer-term direction is to keep `kiora` broad enough to host additional small utilities beyond path access.
 
 ## Requirements
 
@@ -40,6 +40,10 @@ Current constraints:
 ## Example
 
 ```java
+import io.github.amatriciaaana.kiora.path.DeepMap;
+import java.util.List;
+import java.util.Map;
+
 Map<String, Object> payload = Map.of(
         "user", Map.of(
                 "profile", Map.of("name", "Aki")

@@ -1,4 +1,4 @@
-package dev.codex.pathmap;
+package io.github.amatriciaaana.kiora.path;
 
 import java.util.ArrayList;
 import java.util.List;
