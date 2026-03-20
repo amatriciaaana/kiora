@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.result;
+package dev.kiora.result;
 
 import java.util.Optional;
 import java.util.function.Function;

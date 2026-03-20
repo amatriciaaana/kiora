@@ -1,6 +1,6 @@
-module io.github.amatriciaaana.kiora {
-    exports io.github.amatriciaaana.kiora.optional;
-    exports io.github.amatriciaaana.kiora.path;
-    exports io.github.amatriciaaana.kiora.result;
-    exports io.github.amatriciaaana.kiora.text;
+module dev.kiora {
+    exports dev.kiora.optional;
+    exports dev.kiora.path;
+    exports dev.kiora.result;
+    exports dev.kiora.text;
 }

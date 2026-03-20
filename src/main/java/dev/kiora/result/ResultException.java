@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.result;
+package dev.kiora.result;
 
 /**
  * Wraps checked exceptions when a failed result is converted back into a thrown exception.

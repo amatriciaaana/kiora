@@ -1,11 +1,11 @@
-package io.github.amatriciaaana.kiora.optional;
+package dev.kiora.optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import io.github.amatriciaaana.kiora.result.Result;
+import dev.kiora.result.Result;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;

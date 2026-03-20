@@ -4,10 +4,10 @@
 
 The library currently includes four focused packages:
 
-- `io.github.amatriciaaana.kiora.path` for safe access to nested `Map<String, Object>` and `List<?>` structures
-- `io.github.amatriciaaana.kiora.result` for lightweight success/failure handling around exception-heavy code
-- `io.github.amatriciaaana.kiora.optional` for small `Optional` helpers that remove repeated boilerplate
-- `io.github.amatriciaaana.kiora.text` for null-safe text utilities around blank and empty strings
+- `dev.kiora.path` for safe access to nested `Map<String, Object>` and `List<?>` structures
+- `dev.kiora.result` for lightweight success/failure handling around exception-heavy code
+- `dev.kiora.optional` for small `Optional` helpers that remove repeated boilerplate
+- `dev.kiora.text` for null-safe text utilities around blank and empty strings
 
 The longer-term direction is to keep `kiora` broad enough to host additional small utilities without turning it into a framework.
 
@@ -21,7 +21,7 @@ That setup keeps the project aligned with the latest LTS while remaining easy to
 ## Path Example
 
 ```java
-import io.github.amatriciaaana.kiora.path.DeepMap;
+import dev.kiora.path.DeepMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,8 +44,8 @@ boolean hasCoupon = deepMap.hasPath("items[0].coupon");
 ## Result Example
 
 ```java
-import io.github.amatriciaaana.kiora.result.Result;
-import io.github.amatriciaaana.kiora.result.Try;
+import dev.kiora.result.Result;
+import dev.kiora.result.Try;
 
 Result<Integer> parsed = Try.of(() -> Integer.parseInt("42"))
         .map(value -> value + 1);
@@ -56,8 +56,8 @@ int value = parsed.orElse(0);
 ## Optional Example
 
 ```java
-import io.github.amatriciaaana.kiora.optional.MoreOptional;
-import io.github.amatriciaaana.kiora.result.Result;
+import dev.kiora.optional.MoreOptional;
+import dev.kiora.result.Result;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -69,7 +69,7 @@ Result<String> required = MoreOptional.toResult(visible, () -> new NoSuchElement
 ## Text Example
 
 ```java
-import io.github.amatriciaaana.kiora.text.Texts;
+import dev.kiora.text.Texts;
 
 String nickname = Texts.blankToDefault("  ", "guest");
 String normalized = Texts.nullIfBlank("\n");

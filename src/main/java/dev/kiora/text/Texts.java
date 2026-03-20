@@ -1,4 +1,4 @@
-package io.github.amatriciaaana.kiora.text;
+package dev.kiora.text;
 
 import java.util.List;
 
