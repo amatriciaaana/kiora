@@ -3,4 +3,5 @@ module dev.kiora {
     exports dev.kiora.path;
     exports dev.kiora.result;
     exports dev.kiora.text;
+    exports dev.kiora.validate;
 }
