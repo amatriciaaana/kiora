@@ -2,12 +2,13 @@
 
 `kiora` is a Java utility library aimed at reducing repetitive code in everyday applications.
 
-The library currently includes four focused packages:
+The library currently includes five focused packages:
 
 - `dev.kiora.path` for safe access to nested `Map<String, Object>` and `List<?>` structures
 - `dev.kiora.result` for lightweight success/failure handling around exception-heavy code
 - `dev.kiora.optional` for small `Optional` helpers that remove repeated boilerplate
 - `dev.kiora.text` for null-safe text utilities around blank and empty strings
+- `dev.kiora.unchecked` for adapting checked-exception code to standard Java functional APIs
 
 The longer-term direction is to keep `kiora` broad enough to host additional small utilities without turning it into a framework.
 
@@ -84,6 +85,28 @@ boolean blank = Texts.isBlank(nickname);
 - `Texts.emptyToNull(value)`
 - `Texts.blankToDefault(value, fallback)`
 - `Texts.lines(value)`
+
+## Unchecked Example
+
+```java
+import dev.kiora.unchecked.Unchecked;
+import java.util.List;
+import java.util.stream.Stream;
+
+List<Integer> values = Stream.of("1", "2", "3")
+        .map(Unchecked.function(Integer::parseInt))
+        .toList();
+```
+
+## Unchecked API Surface
+
+- `Unchecked.get(supplier)`
+- `Unchecked.run(runnable)`
+- `Unchecked.supplier(supplier)`
+- `Unchecked.runnable(runnable)`
+- `Unchecked.function(function)`
+- `Unchecked.consumer(consumer)`
+- `Unchecked.predicate(predicate)`
 
 ## Build
 
