@@ -1,6 +1,6 @@
 # kiora
 
-`kiora` is a Java utility library aimed at reducing repetitive code in everyday applications.
+`kiora` is a Java 17+ utility library for reducing repetitive code around nested data, results, optionals, text, and validation.
 
 The library currently includes five focused packages:
 
